@@ -26,11 +26,11 @@ The method of execution is simple. The syntax of execution is as follows
 >$ computeParticleTrack method
 
 The **particleTrackDict** file must be placed in system/ directory and the sample dictionary is given in the source folder itself.
-There are 3 methods, **points**, **patch** and **backTrack**. Each method requires corresponding input from the dictionary.
+There are 2 methods, **points** and **patch**. Each method requires corresponding input from the dictionary.
 
 ### developed by Ramkumar. ###
 
 ### Version details ###
-version-1: with provided fix timestep.
-version-2: with autoTimestep, inletPatchNames, points and backtrack.
-version-3: with autTimestep, points and patch name, inlet or outlet will be decided by the application.
+  * version-1: with provided fix timestep.
+  * version-2: with autoTimestep, inletPatchNames, points and backtrack.
+  * version-3: with autTimestep, points and patch name, The patch type i.e. inlet or outlet will be decided by the application.
