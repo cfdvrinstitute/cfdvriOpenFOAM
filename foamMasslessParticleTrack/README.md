@@ -17,7 +17,7 @@ The outputs from the applicaiton are as follows,
 The residence time and distance travelled are printed the terminal in addition to writing in the file **particlesData.csv** under **postProcessing/** folder. The vtk file for each particle is created in the **VTK/** folder in the case directory.
 
 ## compiling application ##
-The folder **Make** and the C++ files (*computeParticleTrack.C, pointsMethod.H, patchMethod.H, backTrackMethod.H & writeVTK.H*) has to be placed in a separate directory.
+The folder **Make** and the C++ source files (*computeParticleTrack.C, pointsMethod.H, patchMethod.H & writeVTK.H*) has to be placed in a separate directory.
 the command **wmake** executing in the directory will compile the application.
 
 ## Method of executing the application ##
@@ -31,6 +31,11 @@ There are 2 methods, **points** and **patch**. Each method requires correspondin
 ### developed by Ramkumar. ###
 
 ### Version details ###
-  * version-1: with provided fix timestep.
-  * version-2: with autoTimestep, inletPatchNames, points and backtrack.
-  * version-3: with autTimestep, points and patch name, The patch type i.e. inlet or outlet will be decided by the application.
+version-1: with provided fix timestep.
+version-2: with autoTimestep, inletPatchNames, points and backtrack.
+version-3: with autTimestep, points and patch name, inlet or outlet will be decided by the application.
+version-4: with autTimestep, points and patch name, inlet or outlet will be decided by the application & random points provision for patch method.
+
+### note for version 4 ###
+If number of random points is less than or equal to 0 or greater than total number of cells on that patch, the random points count will
+be taken to be the number of cells on that patch.

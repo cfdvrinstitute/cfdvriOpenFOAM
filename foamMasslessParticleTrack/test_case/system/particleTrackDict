@@ -27,6 +27,9 @@ coordinates			// list of coordinates for starting of particle
  );
 
 // for "patch" method
-patchName outlet;		// patch name to launch particles fore/back trace
+patchName inlet;		// patch name to launch particles fore/back trace
+nRandomPoints 20;		// number of random points to be taken on the patch
+                                // value >=1, that many random points will be taken on patch
+                                // value <1, all points on patch will be taken
 
 // ************************************************************************* //

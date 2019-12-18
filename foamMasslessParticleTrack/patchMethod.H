@@ -3,10 +3,14 @@
 // using patch name			        //
 //////////////////////////////////////////////////
 
-word patchName;
 
 // reading patch name
+word patchName;
 propDict.lookup("patchName") >> patchName;
+
+// reading number of random points to be taken on patch
+label nRandomPoints;
+propDict.lookup("nRandomPoints") >> nRandomPoints;
 
 // retriving patch id
 label patchID(mesh.boundaryMesh().findPatchID(patchName));
@@ -14,10 +18,46 @@ label patchID(mesh.boundaryMesh().findPatchID(patchName));
 // getting the cell ids
 List<label> faceCells(mesh.boundary()[patchID].patch().faceCells());
 
+// declaring chosen cells list
+List<label> chosenNums, chosenCells;
+
+label count(0), randNum, cellCount(faceCells.size());
+
+bool foundFlag;
+
+if(nRandomPoints <= 0 || nRandomPoints >= cellCount)
+  chosenCells = faceCells;
+ else
+   {
+     while(count < nRandomPoints)
+       {
+	 randNum = std::rand()%(cellCount);
+
+	 foundFlag = false;
+
+	 for(int i = 0; i < chosenNums.size(); i++)
+	   {
+	     if(randNum == chosenNums[i])
+	       {
+		 foundFlag = true;
+		 break;
+	       }
+	   }
+
+	 if(foundFlag)
+	   continue;
+	 else
+	   {
+	     chosenCells.append(faceCells[randNum]);
+	     count++;
+	   }
+       }
+   }
+
 // assembling the cell center coordinates as particle starting points
-for(int i = 0; i < faceCells.size(); i++)
+for(int i = 0; i < chosenCells.size(); i++)
   {
-    label pos(faceCells[i]);
+    label pos(chosenCells[i]);
     particlePositions.append(mesh.C()[pos]);
   }
 
