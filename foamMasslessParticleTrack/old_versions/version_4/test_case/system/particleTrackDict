@@ -1,0 +1,35 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  3.0.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      particleTrackProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// general
+maxTimeStep 1000;		// maximum number of timesteps to take
+
+// for "points" method
+coordinates			// list of coordinates for starting of particle
+(
+ (1 2 3)
+ (4 5 6)
+ (7 8 9)
+ );
+
+// for "patch" method
+patchName inlet;		// patch name to launch particles fore/back trace
+nRandomPoints 20;		// number of random points to be taken on the patch
+                                // value >=1, that many random points will be taken on patch
+                                // value <1, all points on patch will be taken
+
+// ************************************************************************* //
